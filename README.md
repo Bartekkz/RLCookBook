@@ -1,4 +1,4 @@
-## RL_CookBook
+## RLCookBook
 Implementation of various Reinforcement Learning algorithms
 
 ### Basics Questions and answers
