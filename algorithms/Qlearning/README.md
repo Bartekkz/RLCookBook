@@ -1,8 +1,8 @@
 # Q-learning
-Quick facts about Q-learning:
-    - online
-    - uses boostrap learning
-    - off policy
+Quick facts about Q-learning:  
+    - online  
+    - uses boostrap learning  
+    - off policy  
 ## Tabular Q-learning
 Just for now we are gonna stick to the most basic form of Q-learning, which as title says is tabular form.
 For the problems with small number of possible states we can create a Q-table. 
