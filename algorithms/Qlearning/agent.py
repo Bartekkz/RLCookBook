@@ -2,7 +2,6 @@ import numpy as np
 from collections import namedtuple
 
 pair = namedtuple("pair", field_names=["state", "action"])
-Experience = named
 
 
 class Agent:
@@ -51,9 +50,10 @@ class Agent:
         In this example we are gonna use epsilon greedy
         strategy for exploration vs exploitation problem
         """
-        if np.random.random() > self.epsilon:
-            action = np.random.choice([action for action in n_actions])
+        if np.random.random() < self.epsilon:
+            action = np.random.choice([action for action in range(self.n_actions)])
         else:
+            
             actions = np.array([self.Q[(state, action)]
                                 for action in range(self.n_actions)])
             action = np.argmax(actions)
@@ -67,12 +67,13 @@ class Agent:
             self.eps_dec if self.epsilon > self.eps_min else self.eps_min
 
     def update_q_table(self, state: int, action: int, reward: float, next_state: int) -> None:
-        next_actions = np.array([self.Q[next_state, action] for action in range(n_actions)])
-        next_max_action = np.argmax(next_actions)
+        """
+        Updates Q-table with formula You can find in README file
+        """
+        next_actions = np.array([self.Q[next_state, action]
+                                 for action in range(self.n_actions)])
+        next_state_max_action = np.argmax(next_actions)
 
-        self.Q[(state, action)]
-
-
-if __name__ == "__main__":
-    agent = Agent(1, 1, 10, 2, 10, 10, 10)
-    agent.choose_action(1)
+        self.Q[(state, action)] += self.lr * (reward + self.gamma *
+                                              self.Q[(next_state, next_state_max_action)] - self.Q[(state, action)])
+        self.decrement_epsilon()
