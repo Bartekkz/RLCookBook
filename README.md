@@ -12,7 +12,7 @@ a quick reminder about mathematical background of various RL methods or want to 
 #### 3) What is the source of theoretical notes(especially mathematical equations and transformations?)
 All the informations I gathered so far that I am going to include in this repo I writed down while watching DeepMind lectures from
 2015. You can find them here (https://www.youtube.com/watch?v=2pWv7GOvuf0&list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ). The rest will be
-from OpenAI "Spinning UP" which You can find here (https://spinningup.openai.com/en/latest/user/introduction.html#what-this-is)
+from OpenAI "Spinning UP" which You can find here (https://spinningup.openai.com/en/latest/user/introduction.html#what-this-is). I highly recommend to go through both lecture series (DeepMind) and reading/coding materials (OpenAI).
 
 #### 4) What is the plan of releasing notes and implementations?
 Basically I am gonna post several implementations of "standard" algortithms and what I mean by that is that those are not belong to so 
