@@ -9,7 +9,7 @@ You build a neural netowork model for categorical policy the same as You would b
 • finally we have a *softmax to convert logits into probabilities  
 
 ## Where Categorical Policy are used?
-Categorical poliscies are used in discrete action spaces
+Categorical policies are used in discrete action spaces.
 
 ## Sampling actions from policy
 We sample from policy using *__Categorical Distribution__.
@@ -27,5 +27,7 @@ If You want to get a deeper understanding about diffrent definitons of logits, Y
 Softmax function is often used in neural networks. It maps the non-normalized output of a network to a probability distribution over predicted output classes. The standard softmax funxtion is defined by following formula:
 ![](https://i.stack.imgur.com/iP8Du.png), where 'i' is the number of classes.
 #### Categorical Distribution
-The term 'categorical distribution' has come to mean to seperate things.__Informally__, it is any
-distribution with categories._____Alternatively___(and more precisely), it is a ___generalization_ of the [Bernoulli distribution](https://towardsdatascience.com/understanding-bernoulli-and-binomial-distributions-a1eef4e0da8f) 
+The term 'categorical distribution' has come to mean two seperate things. __Informally__, it is any
+distribution with categories. __Alternatively__(and more precisely), it is a ___generalization__ of the [Bernoulli distribution](https://towardsdatascience.com/understanding-bernoulli-and-binomial-distributions-a1eef4e0da8f) for categorical random variable. While a random variable in Bernoulli distribution has two possible outcomes, a categorical random variable
+has multiple possibilites. Additional when there is a single trial, the categorical distribution is equal to a multinomial
+distribution. #[Reference](https://www.statisticshowto.com/categorical-distribution)
