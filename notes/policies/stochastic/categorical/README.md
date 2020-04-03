@@ -12,7 +12,7 @@ You build a neural netowork model for categorical policy the same as You would b
 Categorical policies are used in discrete action spaces.
 
 ## Sampling actions from policy
-We sample from policy using *__Categorical Distribution__.
+As said in the main [note](https://github.com/Bartekkz/RLCookBook/blob/master/notes/policies/stochastic/README.md) for stochastic policies sampling actions in one of the key computations while using and training stochastic policies. In categorical policy we sample from policy using *__Categorical Distribution__.
 ## References
 #### logits  
 This term might be confiusing, because in math it means something a little bit diffrent than in ML.  
