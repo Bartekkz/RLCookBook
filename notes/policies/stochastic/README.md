@@ -1,6 +1,6 @@
 # Stochastic policies
 ## Most used stochastic policies
-The two most common kinds of stochastic policies in deep RL are _____categorical policies__ and
+The two most common kinds of stochastic policies in deep RL are __categorical policies__ and
 __diagonal Gaussian policies__.
 ## Key computations for using and training stochastic policies
 * __sampling__ actions from the policy
