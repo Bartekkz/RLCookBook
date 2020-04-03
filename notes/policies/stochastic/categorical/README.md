@@ -8,7 +8,7 @@ You build a neural netowork model for categorical policy the same as You would b
 • last layer in the network is the Linear layer that gives you *logits for each action  
 • finally we have a *softmax to convert logits into probabilities  
 
-## Where Categorical Policy are used?
+## Where Categorical Policies are used?
 Categorical policies are used in discrete action spaces.
 
 ## Sampling actions from policy
