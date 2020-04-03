@@ -3,10 +3,10 @@ Categorical policy is like a classifier over discrete actions (e.g. action_space
 You build a neural netowork model for categorical policy the same as You would build it for typical supervised learning  classification task. For example:  
   
 • input is the observation  
-• then we have a neural network model with some architecture (Linear layers or Conv layers)
+• then we have a neural network model with some architecture (Linear layers, Conv layers, etc.)
    depending on the input  
-• last layer in the network is the Linear layer that gives you *logits for each action  
-• finally we have a *softmax to convert logits into probabilities  
+• last layer in the network is the Linear layer that gives you *logit for each action  
+• finally we have a *softmax function to convert logits into probabilities  
 
 ## Where Categorical Policies are used?
 Categorical policies are used in discrete action spaces.
@@ -28,6 +28,6 @@ Softmax function is often used in neural networks. It maps the non-normalized ou
 ![](https://i.stack.imgur.com/iP8Du.png), where 'i' is the number of classes.
 #### Categorical Distribution
 The term 'categorical distribution' has come to mean two seperate things. __Informally__, it is any
-distribution with categories. __Alternatively__(and more precisely), it is a ___generalization__ of the [Bernoulli distribution](https://towardsdatascience.com/understanding-bernoulli-and-binomial-distributions-a1eef4e0da8f) for categorical random variable. While a random variable in Bernoulli distribution has two possible outcomes, a categorical random variable
+distribution with categories. __Alternatively__(and more precisely), it is a __generalization__ of the [Bernoulli distribution](https://www.statisticshowto.com/categorical-distribution) for categorical random variable. While a random variable in Bernoulli distribution has two possible outcomes, a categorical random variable
 has multiple possibilites. Additional when there is a single trial, the categorical distribution is equal to a multinomial
 distribution. #[Reference](https://www.statisticshowto.com/categorical-distribution)
