@@ -1,2 +1,2 @@
-## What will this directory include?
-In this section of notes directory I will add some explenations about various math definitions etc.
+## What will be include here?
+In this section of notes I will add some explanations for various math definitions like diffrent kind of distributions, etc.
