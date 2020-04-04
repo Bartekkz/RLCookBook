@@ -5,4 +5,4 @@ As You probably already know the goal of reinforcement learning is to find an op
 , where __dπ__ denotes the discounted probability of reaching each
 state under the policy __π__.  
 As said before we want to optimize θ in order to change our policy
-to maximize the return. We can achieve with a help of a __gradient ascent__ by moving θ toward the direction suggested by the gradient ∇θJ(θ).
+to maximize the return. We can achieve it with a help of a [gradient ascent](https://en.wikipedia.org/wiki/Gradient_descent) by moving θ toward the direction suggested by the __gradient ∇θJ(θ)__.
