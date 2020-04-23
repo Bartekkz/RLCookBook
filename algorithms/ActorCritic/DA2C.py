@@ -1,3 +1,4 @@
+#!/usr/bin/env python3  
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -47,7 +48,6 @@ def worker(t, worker_model, counter, params):
 
 def run_episode(worker_env, worker_model):
     state = torch.from_numpy(worker_env.env.state).float()
-    print(state)
     values, logprobs, rewards = [], [], []
     done = False
     j = 0
@@ -55,7 +55,7 @@ def run_episode(worker_env, worker_model):
         j += 1
         policy, value = worker_model(state)
         values.append(value)
-        logits = policy.view(-1)
+        logits = policy.view(-1) # reshape
         action_dist = torch.distributions.Categorical(logits=logits)
         action = action_dist.sample()
         print(action)
@@ -68,4 +68,5 @@ if __name__ == "__main__":
     run_episode(env, ac)
         
         
+
 
