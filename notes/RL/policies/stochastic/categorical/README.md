@@ -15,7 +15,7 @@ Categorical policies are used in discrete action spaces.
 As said in the main [note](https://github.com/Bartekkz/RLCookBook/blob/master/notes/policies/stochastic/README.md) for stochastic policies sampling actions in one of the key computations while using and training stochastic policies. In categorical policy we sample from policy using *__Categorical Distribution__.
 ## References
 #### logits  
-This term might be confiusing, because in math it means something a little bit diffrent than in ML.  
+This term might be confusing, because in math it means something a little bit diffrent than in ML.  
 In __math__, Logit is a function that maps probabilities ([0, 1]) to R( (-inf, inf) ) with the following formulas:  
 ![](https://i.stack.imgur.com/zto5q.png)  
 Important to note is that: Probability of 0.5 corresponds to a logit of 0. Negative logit correspond to probabilities less than 0.5, positive to > 0.5.
