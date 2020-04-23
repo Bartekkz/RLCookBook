@@ -43,7 +43,9 @@ def worker(t, worker_model, counter, params):
     worker_opt.zero_grad()
     for i in range(params['epochs']):
         worker_opt.zero_grad()
-        values, logprobs, rewards = 1, 1, 1 
+        values, logprobs, rewards = run_episode(worker_env, worker_model) 
+        actor_loss, critic_loss, eplen = update_params(worker_opt, values, logprobs, rewards)
+        counter.value += 1
 
 
 def run_episode(worker_env, worker_model):
@@ -58,15 +60,56 @@ def run_episode(worker_env, worker_model):
         logits = policy.view(-1) # reshape
         action_dist = torch.distributions.Categorical(logits=logits)
         action = action_dist.sample()
-        print(action)
-        exit(0)
+        logprob_ = policy.view(-1)[action]
+        logprobs.append(logprob_)
+        state_, _, done, info = worker_env.step(action.detach().numpy()) 
+        state = torch.from_numpy(state_).float()
+        if done:
+            reward -= 10
+            worker_env.reset()
+        else:
+            reward = 1.0
+        rewards.append(reward)
+    return values, logprobs, rewards
 
-if __name__ == "__main__":
-    env = gym.make("CartPole-v1")
-    env.reset()
-    ac = ActorCritic()
-    run_episode(env, ac)
-        
-        
 
+def update_params(worker_opt, values, logprobs, rewards, clc=0.1, gamma=0.95):
+    rewards = torch.Tensor(rewards).flip(dims=(0,)).view(-1) # view to enure flat tensor
+    logprobs = torch.stack(logprobs).flip(dims=(0,)).view(-1)
+    values = torch.stack(values).flip(dims=(0,)).view(-1)
+    Returns = []
+    ret_ = torch.Tensor([0])
+    for r in range(rewards.shape[0]):
+        # discounted reward
+        ret_ = rewards[r] + gamma * ret_
+        Returns.append(ret_)
+    Returns = torch.stack(Returns).view(-1)
+    Returns = F.normalize(Returns, dim=0)
+    actor_loss = -1 * logprobs * (Returns - values.detach())
+    critic_loss = torch.pow(values - Returns, 2)
+    loss = actor_loss.sum() + clc * critic_loss.sum()
+    loss.backward()
+    worker_opt.step()
+    return actor_loss, critic_loss, len(rewards)
+
+
+MasterNode = ActorCritic()
+MasterNode.share_memory()
+processes = []
+params = {
+    'epochs': 1000,
+    'n_workers': 1,
+}
+
+counter = mp.Value('i', 0)
+for i in range(params['n_workers']):
+    p = mp.Process(target=worker, args=(i, MasterNode, counter, params))
+    p.start()
+    processes.append(p)
+
+for p in processes:
+    p.join()
+
+for p in processes:
+    p.terminate()
 
